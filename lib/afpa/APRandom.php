@@ -24,7 +24,7 @@ class APRandom{
     }
   }
 
-  public function rand(){
+  public function rand() : float{
     $result = $this->seed * $this->multiplier;
     // $result -= floor($result);
     $this->setSeed($result - floor($result));
@@ -32,5 +32,9 @@ class APRandom{
     // echo $this->seed, PHP_EOL;
 
     return $this->seed;
+  }
+
+  public function randInt(int $min, int $max) : int{
+    return floor(static::rand() * ($max - $min + 1) + $min);
   }
 }
